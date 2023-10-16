@@ -1,0 +1,18 @@
+[
+    {
+        "sprite": "flowerBlue",
+        "foodValue": 5
+    },
+    {
+        "sprite": "flowerGreen",
+        "foodValue": 1
+    },
+    {
+        "sprite": "flowerYellow",
+        "foodValue": 10
+    },
+    {
+        "sprite": "flowerRed",
+        "foodValue": 15
+    }
+]
