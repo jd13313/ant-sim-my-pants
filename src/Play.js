@@ -97,6 +97,12 @@ class Play extends Phaser.Scene {
             frames: this.anims.generateFrameNumbers('foodStrawberry', { start: 0, end: 3 }),
             repeat: 0
         });
+
+        this.anims.create({
+            key: 'foodMeatEat',
+            frames: this.anims.generateFrameNumbers('foodMeat', { start: 0, end: 3 }),
+            repeat: 0
+        })
     }
 
     /**
@@ -120,7 +126,7 @@ class Play extends Phaser.Scene {
         if (this.collisionActive) {
             return;
         }
-        
+
         const speed = this.ant.getData('speed');
         const moveAnimation = 'redAntWalk';
 

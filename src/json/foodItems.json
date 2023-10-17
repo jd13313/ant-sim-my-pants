@@ -4,15 +4,7 @@
         "foodValue": 5
     },
     {
-        "spriteName": "flowerGreen",
-        "foodValue": 1
-    },
-    {
-        "spriteName": "flowerYellow",
-        "foodValue": 10
-    },
-    {
-        "spriteName": "flowerRed",
+        "spriteName": "foodMeat",
         "foodValue": 15
     }
 ]
