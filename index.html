@@ -7,7 +7,15 @@
     <title>Vite App</title>
   </head>
   <body>
-    <div id="game-container"></div>
+    <div style="display: flex; justify-content: space-between; width: 800px; margin: 0 auto;">
+      <div id="game-container"></div>
+      <div id="game-info">
+        <ul id="game-stats">
+          <li><strong>Ant Health:</strong> <span id="stat-health">0</span></li>
+          <li><strong>Ant Food:</strong> <span id="stat-food">0</span></li>
+        </ul>
+      </div>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

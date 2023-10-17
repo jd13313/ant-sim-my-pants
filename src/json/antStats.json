@@ -1,0 +1,9 @@
+{
+    "health": 100,
+    "food": 50,
+    "speed": 1.25,
+    "effects": {
+        "speedBoost": false,
+        "healthBoost": false
+    }
+}
