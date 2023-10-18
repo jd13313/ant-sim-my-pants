@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import foodItems from './json/foodItems.json';
 import antStats from './json/antStats.json';
+import effectsData from './json/effects.json';
 
 class Play extends Phaser.Scene {
     constructor() {
@@ -31,6 +32,9 @@ class Play extends Phaser.Scene {
 
         const statFoodElement = document.getElementById('stat-food');
         statFoodElement.innerText = this.ant.getData('food');
+
+        const statSpeedElement = document.getElementById('stat-speed');
+        statSpeedElement.innerText = this.ant.getData('speed');
     }
 
     
@@ -50,6 +54,19 @@ class Play extends Phaser.Scene {
         } else {
             ant.setData('food', 100);
         }
+
+        // Effects
+        const foodItemEffects = foodItem.getData('effects');
+        if (foodItemEffects){
+            foodItemEffects.forEach(effect => {
+                const effectData = effectsData[effect]
+                ant.setData(effectData.impactedStat, ant.getData(effectData.impactedStat) + effectData.value);
+                setTimeout(() => {
+                    ant.setData(effectData.impactedStat, ant.getData(effectData.impactedStat) - effectData.value);
+                }, effectData.duration);
+            });
+        }
+
 
         // Handle eating animations
         this.setInputStatus(false);
@@ -78,6 +95,7 @@ class Play extends Phaser.Scene {
             foodSprite.setOrigin(0, 0);
             foodSprite.setData('foodValue', foodItems[randomFoodIndex].foodValue);
             foodSprite.setData('eatAnimation', foodItems[randomFoodIndex].spriteName + 'Eat');
+            foodSprite.setData('effects', foodItems[randomFoodIndex].effects);
             foodItemGroupMembers.push(foodSprite);
         }
 

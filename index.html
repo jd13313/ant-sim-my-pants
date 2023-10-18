@@ -6,14 +6,27 @@
     <title>Ant Sim My Pants</title>
   </head>
   <body>
-    <div style="display: flex; justify-content: space-between; width: 800px; margin: 0 auto;">
+    <div style="display: flex; justify-content: space-between; width: 850px; margin: 0 auto;">
       <div id="game-container"></div>
       <div id="game-info">
+        <h3>Stats:</h3>
         <ul id="game-stats">
           <li><strong>Game Vers:</strong>0.1.0</li>
           <li><strong>Ant Health:</strong> <span id="stat-health">0</span></li>
           <li><strong>Ant Food:</strong> <span id="stat-food">0</span></li>
+          <li><strong>Ant Speed:</strong> <span id="stat-speed">0</span></li>
         </ul>
+
+        <h3>Controls:</h3>
+        <ul id="game-controls">
+          <li>Movement: Arrow keys</li>
+          <li><button onClick="location.reload();">Restart</button></li>
+        </ul>
+
+        <div id="debug-output" style="display: none;">
+          <h3>Debug Output:</h3>
+          <ul id="debug-output-list"></ul>
+        </div>
       </div>
     </div>
     <script type="module" src="/main.js"></script>

@@ -21,7 +21,13 @@ const config = {
             gravity: { y: 0 }
         }
     },
-    scene: [Boot, Play]
+    scene: [Boot, Play],
+    debug: true,
 };
 
 new Phaser.Game(config);
+
+if (config.debug) {
+    const debugOutput = document.getElementById('debug-output');
+    debugOutput.style.display = 'block';
+}

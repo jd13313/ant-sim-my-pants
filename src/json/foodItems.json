@@ -1,7 +1,8 @@
 [
     {
         "spriteName": "foodStrawberry",
-        "foodValue": 5
+        "foodValue": 5,
+        "effects": ["speedBoost"]
     },
     {
         "spriteName": "foodMeat",

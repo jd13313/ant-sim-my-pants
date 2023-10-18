@@ -1,0 +1,8 @@
+{
+    "speedBoost": {
+        "name": "Speed Boost",
+        "impactedStat": "speed",
+        "value": 1.5,
+        "duration": 1000
+    }
+}

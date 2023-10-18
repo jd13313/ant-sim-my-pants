@@ -4,6 +4,7 @@
     "speed": 1.25,
     "effects": {
         "speedBoost": false,
-        "healthBoost": false
+        "healthBoost": false,
+        "attackBoost": false
     }
 }
