@@ -6,7 +6,7 @@ class Boot extends Phaser.Scene {
     }
 
     preload() {
-        this.load.spritesheet('antRed', 'assets/antRed.png', { frameWidth: 32, frameHeight: 32 });
+        this.load.spritesheet('antRed', 'assets/antRed2.png', { frameWidth: 64, frameHeight: 64 });
         this.load.spritesheet('foodStrawberry', 'assets/food/foodStrawberry.png', { frameWidth: 32, frameHeight: 32 });
         this.load.spritesheet('foodMeat', 'assets/food/foodMeat.png', { frameWidth: 32, frameHeight: 32 });
 

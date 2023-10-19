@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import foodItems from './json/foodItems.json';
-import antStats from './json/antStats.json';
 import effectsData from './json/effects.json';
+import redAnt from './RedAnt.js';
 
 class Play extends Phaser.Scene {
     constructor() {
@@ -27,14 +27,15 @@ class Play extends Phaser.Scene {
     update() {
         this.handlePlayerMovement();
         
-        const statHealthElement = document.getElementById('stat-health');
-        statHealthElement.innerText = this.ant.getData('health');
-
-        const statFoodElement = document.getElementById('stat-food');
-        statFoodElement.innerText = this.ant.getData('food');
-
-        const statSpeedElement = document.getElementById('stat-speed');
-        statSpeedElement.innerText = this.ant.getData('speed');
+        const gameStatsElement = document.getElementById('game-stats');
+        const antStats = this.ant.getData('stats');
+        gameStatsElement.innerHTML = `
+            <li>Health: ${antStats.health}</li>
+            <li>Intelligence: ${antStats.intelligence}</li>
+            <li>Strength: ${antStats.strength}</li>
+            <li>Dexterity: ${antStats.dexterity}</li>
+            <li>Constitution: ${antStats.constitution}</li>
+        `;
     }
 
     
@@ -69,13 +70,11 @@ class Play extends Phaser.Scene {
 
 
         // Handle eating animations
-        this.setInputStatus(false);
         const foodAnimationName = foodItem.getData('eatAnimation');
         if (this.anims.exists(foodAnimationName)) {    
             foodItem.anims.play(foodAnimationName, true);
             foodItem.once('animationcomplete', () => {
                 foodItem.destroy();
-                this.setInputStatus(true);
                 this.collisionActive = false;
             });
         } else {
@@ -104,13 +103,6 @@ class Play extends Phaser.Scene {
 
     prepareAnimations() {
         this.anims.create({
-            key: 'redAntWalk',
-            frames: this.anims.generateFrameNumbers('antRed', { start: 0, end: 1 }),
-            framerate: 10,
-            repeat: -1
-        });
-
-        this.anims.create({
             key: 'foodStrawberryEat',
             frames: this.anims.generateFrameNumbers('foodStrawberry', { start: 0, end: 3 }),
             repeat: 0
@@ -127,13 +119,7 @@ class Play extends Phaser.Scene {
      * Create player sprite, animations, and data.
      */
     preparePlayerCharacter() {
-        this.ant = this.add.sprite(100, 300, 'antRed');
-        this.ant.setInteractive();
-        
-        Object.entries(antStats).forEach(([stat, value]) => {
-            this.ant.setData(stat, value);
-        });
-
+        this.ant = new redAnt(this, 100, 300);
         this.antGroup = this.physics.add.group(this.ant, { key: 'antGroup' });
     }
 
@@ -145,28 +131,13 @@ class Play extends Phaser.Scene {
             return;
         }
 
-        const speed = this.ant.getData('speed');
-        const moveAnimation = 'redAntWalk';
+        let direction = Object.entries(this.cursors).find(([keyName, keyData]) => {
+            return keyData.isDown;
+        });
 
-        if (this.cursors.up.isDown) {
-            this.ant.y -= speed;
-            this.ant.rotation = 0;
-            this.ant.anims.play(moveAnimation, true);
-        } else if (this.cursors.down.isDown) {
-            this.ant.y += speed;
-            this.ant.rotation = Math.PI;
-            this.ant.anims.play(moveAnimation, true);
-        } else if (this.cursors.left.isDown) {
-            this.ant.x -= speed;
-            this.ant.rotation = -Math.PI / 2;
-            this.ant.anims.play(moveAnimation, true);
-        } else if (this.cursors.right.isDown) {
-            this.ant.x += speed;
-            this.ant.rotation = Math.PI / 2;
-            this.ant.anims.play(moveAnimation, true);
-        } else {
-            this.ant.anims.play(moveAnimation, false);
-        }
+        direction = direction ? direction[0] : 'none';
+        
+        this.ant.moveInDirection(direction);
     }
 
     /**
@@ -183,10 +154,6 @@ class Play extends Phaser.Scene {
             x: Phaser.Math.Between(0 + clearanceTopX, this.game.config.width - clearanceBottomX),
             y: Phaser.Math.Between(0 + clearanceTopY, this.game.config.height - clearanceBottomY)
         }
-    }
-
-    setInputStatus(status) {
-        console.log('If I could, input status would be: ' + status);
     }
 }
 
