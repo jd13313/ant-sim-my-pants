@@ -11,7 +11,8 @@ class Play extends Phaser.Scene {
     // Core Functions
     create() {
         this.add.tileSprite(0, 0, this.game.config.width, this.game.config.height, 'grass').setOrigin(0, 0);
-        this.add.text(10, 10, '🐜 Ant Sim My Pants 👖', { fontSize: '34px', fill: '#fff' });
+        this.add.text(10, 10, '🐜⚔️ Antventure!', { fontSize: '34px', fill: '#fff' });
+        this.add.text(120, 40, 'By Jeremy D', { fontSize: '24px', fill: '#fff' });
         this.cursors = this.input.keyboard.createCursorKeys();
         this.sounds = {
             eatSound: this.sound.add('eatSound')
