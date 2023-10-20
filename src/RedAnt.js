@@ -12,7 +12,7 @@ class RedAnt extends Phaser.Physics.Arcade.Sprite {
             constitution: 1
         });
 
-        this.setData('activeEffects',{
+        this.setData('activeEffects', {
             speedBoost: false,
             healthBoost: false,
             attackBoost: false
@@ -42,7 +42,7 @@ class RedAnt extends Phaser.Physics.Arcade.Sprite {
     }
 
     calculateMoveDistance() {
-        const speed = this.getData('stats').dexterity;
+        const speed = this.getData('stats')?.dexterity;
         // todo: Eventually do some math here
 
         return speed;

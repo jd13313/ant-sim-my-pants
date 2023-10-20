@@ -10,9 +10,22 @@ class Play extends Phaser.Scene {
 
     // Core Functions
     create() {
+        const textStyles = {
+            ...this.game.config.textStyles.default,
+            ...this.game.config.textStyles.dropShadow
+        };
         this.add.tileSprite(0, 0, this.game.config.width, this.game.config.height, 'grass').setOrigin(0, 0);
-        this.add.text(10, 10, '🐜⚔️ Antventure!', { fontSize: '34px', fill: '#fff' });
-        this.add.text(120, 40, 'By Jeremy D', { fontSize: '24px', fill: '#fff' });
+        this.add.text()
+        this.add.text(10, 10, '⚔️ Antventure!', {...textStyles, fontSize: '36px' });
+       
+        const creditsLink =  this.add.text(this.game.config.width - 90, 10, '[ Credits ]', { ...textStyles, fontSize: '25px' });
+        creditsLink.setInteractive();
+        creditsLink.on('pointerdown', () => {
+            this.scene.switch('Credits');
+        });
+
+
+
         this.cursors = this.input.keyboard.createCursorKeys();
         this.sounds = {
             eatSound: this.sound.add('eatSound')
@@ -24,6 +37,7 @@ class Play extends Phaser.Scene {
 
         this.physics.add.collider(this.antGroup, this.foodItemsGroup, this.handleFoodItemCollision, null, this);
     };
+    
 
     update() {
         this.handlePlayerMovement();
@@ -41,7 +55,6 @@ class Play extends Phaser.Scene {
 
     
     // Secondary Functions
-
     handleFoodItemCollision (ant, foodItem) {
         if (this.collisionActive) {
             return;

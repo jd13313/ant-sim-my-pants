@@ -4,9 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ant Sim My Pants</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
-    <div style="display: flex; justify-content: space-between; width: 850px; margin: 0 auto;">
+    <div id="game">
       <div id="game-container"></div>
       <div id="game-info">
         <h3>Stats:</h3>
@@ -18,7 +22,7 @@
           <li><button onClick="location.reload();">Restart</button></li>
         </ul>
 
-        <div id="debug-output" style="display: none;">
+        <div id="debug-output">
           <h3>Debug Output:</h3>
           <ul id="debug-output-list"></ul>
         </div>

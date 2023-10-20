@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import WebFontLoader from 'webfontloader';
 
 class Boot extends Phaser.Scene {
     constructor() {
@@ -17,6 +18,34 @@ class Boot extends Phaser.Scene {
         this.load.image('grass', 'assets/plants/grass.png');
 
         this.load.audio('eatSound', 'assets/sounds/eating.mp3');
+        
+
+        WebFontLoader.load({
+            google: {
+                families: [
+                    'Amatic SC',
+                ]
+            }
+        });
+
+        this.game.config.textStyles = {
+            default: {
+                fontFamily: 'Amatic SC',
+                fill: '#fff'
+            },
+            dropShadow: {
+                stroke: '#000',
+                strokeThickness: 1,
+                shadow: {
+                    offsetX: 1,
+                    offsetY: 1,
+                    color: '#000',
+                    blur: 10,
+                    stroke: true,
+                    faill: true
+                }
+            }
+        }
     }
 
     create() {

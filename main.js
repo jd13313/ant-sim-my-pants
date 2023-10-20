@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import Boot from './src/Boot';
 import Play from './src/Play';
+import Credits from './src/Credits';
 
 const config = {
     type: Phaser.AUTO,
@@ -21,8 +22,9 @@ const config = {
             gravity: { y: 0 }
         }
     },
-    scene: [Boot, Play],
+    scene: [Boot, Play, Credits],
     debug: true,
+    textStyles: {} // defined in Boot.js
 };
 
 new Phaser.Game(config);
