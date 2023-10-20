@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import WebFontLoader from 'webfontloader';
 
 class Boot extends Phaser.Scene {
     constructor() {
@@ -19,15 +18,6 @@ class Boot extends Phaser.Scene {
 
         this.load.audio('eatSound', 'assets/sounds/eating.mp3');
         
-
-        WebFontLoader.load({
-            google: {
-                families: [
-                    'Amatic SC',
-                ]
-            }
-        });
-
         this.game.config.textStyles = {
             default: {
                 fontFamily: 'Amatic SC',
@@ -45,7 +35,7 @@ class Boot extends Phaser.Scene {
                     faill: true
                 }
             }
-        }
+        };
     }
 
     create() {

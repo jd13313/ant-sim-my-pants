@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import Boot from './src/Boot';
 import Play from './src/Play';
 import Credits from './src/Credits';
+import WebFontLoader from 'webfontloader';
 
 const config = {
     type: Phaser.AUTO,
@@ -27,7 +28,16 @@ const config = {
     textStyles: {} // defined in Boot.js
 };
 
-new Phaser.Game(config);
+WebFontLoader.load({
+    google: {
+        families: [
+            'Amatic SC',
+        ]
+    },
+    active: () => {
+        new Phaser.Game(config);
+    }
+});
 
 if (config.debug) {
     const debugOutput = document.getElementById('debug-output');
