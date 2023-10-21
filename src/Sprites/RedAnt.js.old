@@ -2,9 +2,8 @@ class RedAnt extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y) {
         super(scene, x, y, 'antRed2');
         this.scene.add.existing(this);
-        this.setInteractive();
 
-        this.setData('stats', {
+        this.setupData('stats', {
             health: 100,
             intelligence: 1,
             strength: 1,
@@ -12,7 +11,7 @@ class RedAnt extends Phaser.Physics.Arcade.Sprite {
             constitution: 1
         });
 
-        this.setData('activeEffects', {
+        this.setupData('activeEffects', {
             speedBoost: false,
             healthBoost: false,
             attackBoost: false
@@ -81,7 +80,7 @@ class RedAnt extends Phaser.Physics.Arcade.Sprite {
     addHealth(amount) {
         const currentHealth = this.getData('stats').health;
 
-        this.setData('stats.health', currentHealth + amount);
+        this.setupData('stats.health', currentHealth + amount);
     }
 
     removeHealth(amount) {

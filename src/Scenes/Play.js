@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import foodItems from '../json/foodItems.json';
 import effectsData from '../json/effects.json';
-import redAnt from '../Sprites/RedAnt.js';
+import antRed from '../Containers/AntRed';
 
 class Play extends Phaser.Scene {
     constructor() {
@@ -58,6 +58,7 @@ class Play extends Phaser.Scene {
             return;
         }
         this.collisionActive = true;
+        this.ant.bite();
         this.sounds.eatSound.play();
         const antFoodValue = ant.getData('food');
         const foodValue = foodItem.getData('foodValue');
@@ -131,7 +132,7 @@ class Play extends Phaser.Scene {
      * Create player sprite, animations, and data.
      */
     preparePlayerCharacter() {
-        this.ant = new redAnt(this, 100, 300);
+        this.ant = new antRed(this, 100, 300);
         this.antGroup = this.physics.add.group(this.ant, { key: 'antGroup' });
     }
 
