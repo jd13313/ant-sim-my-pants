@@ -1,4 +1,4 @@
-import credits from './json/credits.json';
+import credits from '../json/credits.json';
 import Phaser from 'phaser';
 
 class Credits extends Phaser.Scene {
@@ -7,7 +7,7 @@ class Credits extends Phaser.Scene {
     }
 
     create() {
-        this.cameras.main.setBackgroundColor('#');
+        this.cameras.main.setBackgroundColor('#ccc');
         const startY = 50;
         const lineHeight = 30;
         const textStyles = this.game.config.textStyles.default;
@@ -24,12 +24,9 @@ class Credits extends Phaser.Scene {
         credits.forEach((credit, index) => {
             this.add.text(10, startY + (lineHeight * index), `${credit.role}: ${credit.name}`, textConfig);
         });
-
-
     }
 
     update() {
-
     }
 }
 

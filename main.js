@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
-import Boot from './src/Boot';
-import Play from './src/Play';
-import Credits from './src/Credits';
+import Boot from './src/Scenes/Boot';
+import Play from './src/Scenes/Play';
+import Credits from './src/Scenes/Credits';
 import WebFontLoader from 'webfontloader';
 
 const config = {

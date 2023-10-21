@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
-import foodItems from './json/foodItems.json';
-import effectsData from './json/effects.json';
-import redAnt from './RedAnt.js';
+import foodItems from '../json/foodItems.json';
+import effectsData from '../json/effects.json';
+import redAnt from '../Sprites/RedAnt.js';
 
 class Play extends Phaser.Scene {
     constructor() {
@@ -23,8 +23,6 @@ class Play extends Phaser.Scene {
         creditsLink.on('pointerdown', () => {
             this.scene.switch('Credits');
         });
-
-
 
         this.cursors = this.input.keyboard.createCursorKeys();
         this.sounds = {
