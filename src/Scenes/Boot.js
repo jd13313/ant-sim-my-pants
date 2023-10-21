@@ -14,6 +14,7 @@ class Boot extends Phaser.Scene {
         this.load.spritesheet('antRedHead', 'assets/antRed/antRedHead.png', { frameWidth: 27, frameHeight: 24 });
         this.load.image('antRedThorax', 'assets/antRed/antRedThorax.png');
         this.load.spritesheet('antRedAbdomen', 'assets/antRed/antRedAbdomen.png', { frameWidth: 19, frameHeight: 26 });
+        this.load.spritesheet('antRedLegs', 'assets/antRed/antRedLegs.png', { frameWidth: 26, frameHeight: 43 });
 
         this.load.image('flowerBlue', 'assets/plants/flowerBlue.png');
         this.load.image('flowerRed', 'assets/plants/flowerRed.png');
