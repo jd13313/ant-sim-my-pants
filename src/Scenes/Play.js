@@ -133,7 +133,8 @@ class Play extends Phaser.Scene {
      */
     preparePlayerCharacter() {
         this.ant = new antRed(this, 100, 300);
-        this.antGroup = this.physics.add.group(this.ant, { key: 'antGroup' });
+        const antHead = this.ant.list[this.ant.ANT_BODY_PARTS.HEAD];
+        this.antGroup = this.physics.add.group(antHead, { key: 'antGroup' });
     }
 
     /**
