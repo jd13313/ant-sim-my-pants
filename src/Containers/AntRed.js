@@ -36,7 +36,7 @@ class AntRed extends Phaser.GameObjects.Container {
         const thorax = this.scene.add.sprite(0, 19, 'antRedThorax');
         const abdomen = this.scene.add.sprite(0, 39, 'antRedAbdomen');
         const legsL = this.scene.add.sprite(18, 18, 'antRedLegs');
-        const legsR = this.scene.add.sprite(-18, 18, 'antRedLegs').setFlipX(true);
+        const legsR = this.scene.add.sprite(-18, 18, 'antRedLegs').setFlipX(true).setFlipY(true);
 
         head.anims.create({
             key: 'antRedHeadBite',
